@@ -301,6 +301,17 @@ exports.ciudadGreatestDifference = (cities) => {
         }
     });
 
+    let parametrosCiudades = cities.map((ciudad) => {
+        return {
+            name: ciudad.name,
+            temp: ciudad.main.temp,
+            feels_like: ciudad.main.feels_like,
+            difference: ciudad.main.temp - ciudad.main.feels_like
+        }
+    }).sort((a, b) => b.difference - a.difference);
+
+    console.log(parametrosCiudades);
+
     return {
         name: cityGreatestDifference.name,
         temp: cityGreatestDifference.main.temp,
