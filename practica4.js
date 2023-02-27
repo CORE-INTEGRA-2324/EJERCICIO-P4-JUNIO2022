@@ -140,6 +140,17 @@ exports.warmer_average_temp = (cities) => {
 
     let nombresCiudades = ciudadesMasCalientesQueMedia.map((ciudad) => ciudad.name);
     return nombresCiudades;
+
+    /*
+    Método con for con índices:
+    let ciudadesMasCalientesQueMedia = [];
+    for(let i = 0; i < cities.length; i++){
+        if(cities[i].main.temp > temperaturaMedia){
+            ciudadesMasCalientesQueMedia.push(cities[i].name);
+        }
+    }
+    return ciudadesMasCalientesQueMedia;
+    */
 };
 
 // Ciudad más al norte
