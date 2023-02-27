@@ -179,7 +179,29 @@ exports.max_north = (cities) => {
 };
 
 // Ciudad más al sur
-exports.max_south = (cities) => {};
+exports.max_south = (cities) => {
+    let ciudadMasAlSur = cities[0];
+
+    cities.forEach((ciudad) => {
+        let latitud = ciudad.coord.lat;
+        if(latitud < ciudadMasAlSur.coord.lat){
+            ciudadMasAlSur = ciudad;
+        }
+    });
+
+    return ciudadMasAlSur.name;
+
+    /*
+    Método con for e índices:
+        for (let i=0; i < cities.length; i++){
+            let latitud = cities[i].coord.lat;
+            if(cities[i].coord.lat < ciudad.coord.lat){
+                ciudad = cities[i];
+            }
+        }
+        return ciudad.name;
+    */
+};
 
 // Cálculo centro de gravedad
 exports.gravity_center = (cities) => {};
