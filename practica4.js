@@ -272,12 +272,9 @@ exports.closest_GC = (cities) => {
 };
 
 exports.citiesWarmerThanTemp = (cities, temp) => {
-    console.log(cities);
     let warmerCities = cities.filter((ciudad) => {
         return ciudad.main.temp > temp;
     });
-
-    console.log(warmerCities);
 
     let warmerCitiesNames = warmerCities.map((ciudad) => {
         return {
