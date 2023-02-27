@@ -11,7 +11,9 @@ const {
     max_north,
     max_south,
     gravity_center,
-    closest_GC } = require ('./practica4.js');
+    closest_GC,
+    citiesWarmerThanTemp
+} = require ('./practica4.js');
 
 const citiesFilename = './cities.json';
 
@@ -35,6 +37,9 @@ let main = async () => {
         console.log("Ciudad más al sur =", max_south(cities));
         console.log("Centro de gravedad =", gravity_center(cities));
         console.log("Más cerca de Centro de Gravedad =", closest_GC(cities));
+        console.log("-------OPCIONAL-------");
+        let temp = 3.6;
+        console.log(`Ciudades más calientes que ${temp}:`, citiesWarmerThanTemp(cities, temp));
     } catch (error) {
         console.log(error);
     }
