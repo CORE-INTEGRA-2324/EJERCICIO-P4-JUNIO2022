@@ -107,7 +107,7 @@ exports.min_temp_max = (cities) => {
 };
 
 // Temperatura media
-exports.average_temp = (cities) => {
+const average_temp = exports.average_temp = (cities) => {
     let numeroDeCiudades = cities.length;
     let valorInicialAcumulador = 0;
 
@@ -130,7 +130,17 @@ exports.average_temp = (cities) => {
 };
 
 // Warmer average temp
-exports.warmer_average_temp = (cities) => {};
+exports.warmer_average_temp = (cities) => {
+    let temperaturaMedia = average_temp(cities);
+
+    let ciudadesMasCalientesQueMedia = cities.filter((ciudad) => {
+        let temperatura = ciudad.main.temp;    
+        return temperatura > temperaturaMedia;
+    });
+
+    let nombresCiudades = ciudadesMasCalientesQueMedia.map((ciudad) => ciudad.name);
+    return nombresCiudades;
+};
 
 // Ciudad más al norte
 exports.max_north = (cities) => {};
