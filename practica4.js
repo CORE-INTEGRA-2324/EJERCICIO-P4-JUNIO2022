@@ -154,7 +154,29 @@ exports.warmer_average_temp = (cities) => {
 };
 
 // Ciudad más al norte
-exports.max_north = (cities) => {};
+exports.max_north = (cities) => {
+    let ciudadMasAlNorte = cities[0];
+
+    cities.forEach((ciudad) => {
+        let latitud = ciudad.coord.lat;
+        if(latitud > ciudadMasAlNorte.coord.lat){
+            ciudadMasAlNorte = ciudad;
+        }
+    });
+
+    return ciudadMasAlNorte.name;
+
+    /*
+    Método con for e índices:
+        for (let i=0; i < cities.length; i++){
+            let latitud = cities[i].coord.lat;
+            if(cities[i].coord.lat > ciudad.coord.lat){
+                ciudad = cities[i];
+            }
+        }
+        return ciudad.name;
+    */
+};
 
 // Ciudad más al sur
 exports.max_south = (cities) => {};
