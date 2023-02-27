@@ -31,8 +31,30 @@ exports.max_temp = (cities) => {
     return maxTemp;
 };
 
-// Temperatura mínimo
-exports.min_temp = (cities) => {};
+// Temperatura mínima
+exports.min_temp = (cities) => {
+    let minTemp = cities[0].main.temp;
+
+    cities.forEach((city) => {
+        let temperatura = city.main.temp;
+        if (temperatura < minTemp){
+            minTemp = temperatura;
+        }
+    });
+
+    /* Método con bucle for habitual
+
+    for (let i = 1; i < cities.length; i++){
+        const temperatura = cities[i].main.temp;
+        if(temperatura < minTemp){
+            minTemp = temperatura;
+        }
+    }
+
+    */
+    
+    return minTemp;
+};
 
 // Máxima temperatura mínima
 exports.max_temp_min = (cities) => {};
