@@ -107,7 +107,27 @@ exports.min_temp_max = (cities) => {
 };
 
 // Temperatura media
-exports.average_temp = (cities) => {};
+exports.average_temp = (cities) => {
+    let numeroDeCiudades = cities.length;
+    let valorInicialAcumulador = 0;
+
+    let sumaTemperaturas = cities.reduce(
+        (temperaturaAcumulada, ciudad) => {
+            let temperatura = ciudad.main.temp;
+            return temperaturaAcumulada + temperatura;
+        }, valorInicialAcumulador
+    );
+
+    return sumaTemperaturas / numeroDeCiudades;
+
+    /* Método con for con índices:
+        for (let i=1; i<cities.length; i++){
+            const temperatura = cities[i].main.temp;
+            temperaturaAcumulada += temperatura;
+        }
+        return temperaturaAcumulada/(cities.length);
+    */
+};
 
 // Warmer average temp
 exports.warmer_average_temp = (cities) => {};
