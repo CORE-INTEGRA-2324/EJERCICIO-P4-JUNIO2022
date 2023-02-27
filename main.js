@@ -12,7 +12,8 @@ const {
     max_south,
     gravity_center,
     closest_GC,
-    citiesWarmerThanTemp
+    citiesWarmerThanTemp,
+    ciudadGreatestDifference
 } = require ('./practica4.js');
 
 const citiesFilename = './cities.json';
@@ -40,6 +41,7 @@ let main = async () => {
         console.log("-------OPCIONAL-------");
         let temp = 3.6;
         console.log(`Ciudades más calientes que ${temp}:`, citiesWarmerThanTemp(cities, temp));
+        console.log(`Ciudad con mayor diferencia de temp y feels_like:`, ciudadGreatestDifference(cities));
     } catch (error) {
         console.log(error);
     }

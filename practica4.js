@@ -288,3 +288,26 @@ exports.citiesWarmerThanTemp = (cities, temp) => {
     return warmerCitiesNames;
 };
 
+const getDiferenciaTempYFeelLike = (ciudad) => {
+    return ciudad.main.temp - ciudad.main.feels_like;
+};
+
+exports.ciudadGreatestDifference = (cities) => {
+    let cityGreatestDifference = cities[0];
+    let greatestDifference = getDiferenciaTempYFeelLike(cities[0]);
+
+    cities.forEach((ciudad) => {
+        let currentCityDifference = getDiferenciaTempYFeelLike(ciudad);
+        if(currentCityDifference > greatestDifference){
+            greatestDifference = currentCityDifference;
+            cityGreatestDifference = ciudad;
+        }
+    });
+
+    return {
+        name: cityGreatestDifference.name,
+        temp: cityGreatestDifference.main.temp,
+        feels_like: cityGreatestDifference.main.feels_like,
+        difference: greatestDifference
+    };
+};
