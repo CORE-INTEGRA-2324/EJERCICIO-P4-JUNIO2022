@@ -204,7 +204,7 @@ exports.max_south = (cities) => {
 };
 
 // Cálculo centro de gravedad
-exports.gravity_center = (cities) => {
+const gravity_center = exports.gravity_center = (cities) => {
     let numeroDeCiudades = cities.length;
 
     /* Método con for e índices:
@@ -242,6 +242,32 @@ exports.gravity_center = (cities) => {
     };
 };
 
-// Más cercano al centro de gravedad
-exports.closest_GC = (cities) => {};
+const getDiferenciaConMedia = (cities, ciudad) => {
+    let mediaLon = gravity_center(cities).lon;
+    let mediaLat = gravity_center(cities).lat;
+
+    let lonCiudad = ciudad.coord.lon;
+    let latCiudad = ciudad.coord.lat;
+
+    let diferenciaLongitudes = lonCiudad - mediaLon;
+    let diferenciaLatitudes = latCiudad - mediaLat;
+
+    return Math.sqrt(Math.pow(diferenciaLongitudes, 2) + Math.pow(diferenciaLatitudes, 2));
+};
+
+// GET Nombre ciudad más cercana al centro de gravedad
+exports.closest_GC = (cities) => {
+    let distanciaMin = getDiferenciaConMedia(cities, cities[0]);
+    let nameCiudadDistanciaMin = "";
+
+    cities.forEach((ciudad) => {
+        let distancia = getDiferenciaConMedia(cities, ciudad);
+        if(distancia < distanciaMin){
+            distanciaMin = distancia;
+            nameCiudadDistanciaMin = ciudad.name;
+        }
+    });
+
+    return nameCiudadDistanciaMin;
+};
 
