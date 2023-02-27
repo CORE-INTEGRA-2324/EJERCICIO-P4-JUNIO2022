@@ -1,7 +1,10 @@
 const fs = require('fs')
 
 // Lectura fichero de forma asíncrona
-exports.load = (file) => {};
+exports.load = (file) => {
+    let cities = JSON.parse(fs.readFileSync(file));
+    return cities;
+};
 
 // Temperatura máxima
 exports.max_temp = (cities) => {};
