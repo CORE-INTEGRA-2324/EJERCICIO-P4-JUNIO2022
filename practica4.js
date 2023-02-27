@@ -207,7 +207,7 @@ exports.max_south = (cities) => {
 exports.gravity_center = (cities) => {
     let numeroDeCiudades = cities.length;
 
-    /*
+    /* Método con for e índices:
 
     let totalLon = 0;
     let totalLat = 0;
