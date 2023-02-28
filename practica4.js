@@ -1,10 +1,9 @@
-const fs = require('fs')
+const {readFile} = require('fs/promises');
 
-// Lectura fichero de forma asíncrona
-exports.load = (file) => {
-    let cities = JSON.parse(fs.readFileSync(file));
-    return cities;
-};
+exports.load = async filename => {
+    const buf = await readFile(filename);
+    return JSON.parse(buf);
+}
 
 // Temperatura máxima
 exports.max_temp = (cities) => {
