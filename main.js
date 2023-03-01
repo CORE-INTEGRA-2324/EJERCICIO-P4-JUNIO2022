@@ -32,7 +32,7 @@ let main = async () => {
         console.log("Temperatura Maxima =", max_temp(cities));
         console.log("Temperatura Mínima =", min_temp(cities));
         console.log("Temperatura Media =", average_temp(cities));
-        console.log("Más calientes que la temperatura Media =", warmer_average_temp(cities).join(", "));
+        console.log("Más calientes que la temperatura Media =", warmer_average_temp(cities));
         console.log("Temperatura Max Mímima =", min_temp_max(cities));
         console.log("Temperatura Min Máxima =", max_temp_min(cities));
         console.log("Ciudad más al norte =", max_north(cities));

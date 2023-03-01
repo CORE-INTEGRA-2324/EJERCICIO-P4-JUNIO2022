@@ -138,7 +138,7 @@ exports.warmer_average_temp = (cities) => {
     });
 
     let nombresCiudades = ciudadesMasCalientesQueMedia.map((ciudad) => ciudad.name);
-    return nombresCiudades;
+    return nombresCiudades.join(", ");
 
     /*
     Método con for con índices:
