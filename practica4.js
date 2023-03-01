@@ -255,26 +255,28 @@ const gravity_center = exports.gravity_center = (cities) => {
     };
 };
 
-const getDiferenciaConMedia = (cities, ciudad) => {
-    let mediaLon = gravity_center(cities).lon;
-    let mediaLat = gravity_center(cities).lat;
+const getDistanciaGC = (cities, ciudad) => {
+    let lonGC = gravity_center(cities).lon;
+    let latGC = gravity_center(cities).lat;
 
     let lonCiudad = ciudad.coord.lon;
     let latCiudad = ciudad.coord.lat;
 
-    let diferenciaLongitudes = lonCiudad - mediaLon;
-    let diferenciaLatitudes = latCiudad - mediaLat;
+    let diferenciaLongitudes = lonCiudad - lonGC;
+    let diferenciaLatitudes = latCiudad - latGC;
 
-    return Math.sqrt(Math.pow(diferenciaLongitudes, 2) + Math.pow(diferenciaLatitudes, 2));
+    let distanciaGC = Math.sqrt(Math.pow(diferenciaLongitudes, 2) + Math.pow(diferenciaLatitudes, 2));
+
+    return distanciaGC;
 };
 
 // GET Nombre ciudad más cercana al centro de gravedad
 exports.closest_GC = (cities) => {
-    let distanciaMin = getDiferenciaConMedia(cities, cities[0]);
+    let distanciaMin = getDistanciaGC(cities, cities[0]);
     let nameCiudadDistanciaMin = "";
 
     cities.forEach((ciudad) => {
-        let distancia = getDiferenciaConMedia(cities, ciudad);
+        let distancia = getDistanciaGC(cities, ciudad);
         if(distancia < distanciaMin){
             distanciaMin = distancia;
             nameCiudadDistanciaMin = ciudad.name;
