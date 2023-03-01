@@ -152,6 +152,20 @@ exports.warmer_average_temp = (cities) => {
     */
 };
 
+exports.citiesWarmerThanTempReduce = (cities) => {
+    let temperaturaMedia = average_temp(cities);
+
+    let valorInicialStringAcumulador = "";
+
+    let nombresCiudadesReduce = cities.reduce((stringAcumulador, ciudad) => {
+        let nombreCiudad = ciudad.name;
+        return stringAcumulador = stringAcumulador + ", " + nombreCiudad; 
+        // return stringAcumulador = `${stringAcumulador}, ${nombreCiudad}`;
+    }, valorInicialStringAcumulador);
+
+    return nombresCiudadesReduce;
+};
+
 // Ciudad más al norte
 exports.max_north = (cities) => {
     let ciudadMasAlNorte = cities[0];

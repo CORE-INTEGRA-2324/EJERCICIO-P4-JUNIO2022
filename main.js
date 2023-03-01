@@ -13,7 +13,8 @@ const {
     gravity_center,
     closest_GC,
     citiesWarmerThanTemp,
-    ciudadGreatestDifference
+    ciudadGreatestDifference,
+    citiesWarmerThanTempReduce
 } = require ('./practica4.js');
 
 const citiesFilename = './cities.json';
@@ -39,9 +40,10 @@ let main = async () => {
         console.log("Centro de gravedad =", gravity_center(cities));
         console.log("Más cerca de Centro de Gravedad =", closest_GC(cities));
         console.log("-------OPCIONAL-------");
+        console.log("Cities más calientes que media REDUCE =", citiesWarmerThanTempReduce(cities));
         let temp = 3.6;
-        console.log(`Ciudades más calientes que ${temp}:`, citiesWarmerThanTemp(cities, temp));
-        console.log(`Ciudad con mayor diferencia de temp y feels_like:`, ciudadGreatestDifference(cities));
+    //     console.log(`Ciudades más calientes que ${temp}:`, citiesWarmerThanTemp(cities, temp));
+    //     console.log(`Ciudad con mayor diferencia de temp y feels_like:`, ciudadGreatestDifference(cities));
     } catch (error) {
         console.log(error);
     }
