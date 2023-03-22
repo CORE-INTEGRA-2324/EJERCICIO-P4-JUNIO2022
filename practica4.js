@@ -1,6 +1,6 @@
 const {readFile} = require('fs/promises');
 
-exports.load = async filename => {
+exports.load = async (filename) => {
     const buf = await readFile(filename);
     return JSON.parse(buf);
 }
