@@ -334,3 +334,43 @@ exports.ciudadGreatestDifference = (cities) => {
         difference: greatestDifference
     };
 };
+
+exports.citiesMayorVientoEmpezandoPorParametroOrder = (cities, letraInicial) => {
+    let ciudadesQueEmpiezanPorParametro = cities.filter((ciudad) => {
+        return ciudad.name[0] === letraInicial;
+    });
+
+    let parsedCiudadesQueEmpiezanPorParametro = ciudadesQueEmpiezanPorParametro.map((ciudad) => {
+        return {
+            name: ciudad.name,
+            wind: ciudad.wind.speed
+        }
+    });
+
+    let ciudadesOrdenadas = parsedCiudadesQueEmpiezanPorParametro.sort((a, b) => b.wind - a.wind);
+
+    return ciudadesOrdenadas[0];
+};
+
+exports.citiesMayorVientoEmpezandoPorParametro = (cities, letraInicial) => {
+    let ciudadesQueEmpiezanPorParametro = cities.filter((ciudad) => {
+        return ciudad.name[0] === letraInicial;
+    });
+
+    let parsedCiudadesQueEmpiezanPorParametro = ciudadesQueEmpiezanPorParametro.map((ciudad) => {
+        return {
+            name: ciudad.name,
+            wind: ciudad.wind.speed
+        }
+    });
+
+    let ciudadMaxViento = parsedCiudadesQueEmpiezanPorParametro[0];
+
+    parsedCiudadesQueEmpiezanPorParametro.forEach((city) => {
+        if(city.wind > ciudadMaxViento.wind){
+            ciudadMaxViento = city;
+        }
+    });
+
+    return ciudadMaxViento;
+};
