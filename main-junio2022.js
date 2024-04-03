@@ -4,7 +4,8 @@ const {
     load,
     alumnosContinua,
     alumnosFinal,
-    alumnosContinuaAprobados
+    alumnosContinuaAprobados,
+    alumnosFinalAprobados
 } = require ('./junio2022.js');
 
 const notasFilename = './notas.json';
@@ -17,6 +18,7 @@ let main = async () => {
         console.log(alumnosContinua(notas));
         console.log(alumnosFinal(notas));
         console.log(alumnosContinuaAprobados(notas));
+        console.log(alumnosFinalAprobados(notas));
     } catch (error) {
         console.log(error);
     }

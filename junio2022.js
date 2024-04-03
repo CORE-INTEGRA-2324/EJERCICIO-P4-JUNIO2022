@@ -12,7 +12,7 @@ const alumnosContinua = exports.alumnosContinua = (notas) => {
     });
 };
 
-exports.alumnosFinal = (notas) => {
+const alumnosFinal = exports.alumnosFinal = (notas) => {
     return notas.filter((alumno) => {
         let condicionContinua = typeof alumno.final !== "undefined";
         return condicionContinua;
@@ -26,7 +26,12 @@ exports.alumnosContinuaAprobados = (notas) => {
     });
 };
 
-
+exports.alumnosFinalAprobados = (notas) => {
+    let alumnosAprobados = alumnosFinal(notas);
+    return alumnosAprobados.filter((alumno) => {
+        return alumno.final >= 5
+    });
+};
 
 // APROBADOS
 // const aprobadosC = alumnosC.filter(a => (a.parcial1 + a.parcial2) / 2 >= 5);
