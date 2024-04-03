@@ -23,6 +23,18 @@ let main = async () => {
         console.log(alumnosFinalAprobados(notas));
         console.log(mediaAlumnosContinua(notas));
         console.log(mediaAlumnosFinal(notas));
+
+        console.log(`
+            Continua: Total = ${alumnosContinua(notas).length},
+            Aprobados = ${alumnosContinuaAprobados(notas).length},
+            Media = ${mediaAlumnosContinua(notas)}
+        `);
+
+        console.log(`
+            Final: Total = ${alumnosFinal(notas).length},
+            Aprobados = ${alumnosFinalAprobados(notas).length},
+            Media = ${mediaAlumnosFinal(notas)}
+        `);
     } catch (error) {
         console.log(error);
     }
