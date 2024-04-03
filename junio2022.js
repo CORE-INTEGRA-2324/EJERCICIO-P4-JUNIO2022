@@ -20,11 +20,14 @@ exports.alumnosFinal = (notas) => {
 };
 
 exports.alumnosContinuaAprobados = (notas) => {
-    return notas.filter((alumno) => {
+    let alumnosAprobados = alumnosContinua(notas);
+    return alumnosAprobados.filter((alumno) => {
         return (alumno.parcial1 + alumno.parcial2) / 2 >= 5;
     });
 };
 
+
+
 // APROBADOS
-const aprobadosC = alumnosC.filter(a => (a.parcial1 + a.parcial2) / 2 >= 5);
-const aprobadosF = alumnosF.filter(a => a.final >= 5);
+// const aprobadosC = alumnosC.filter(a => (a.parcial1 + a.parcial2) / 2 >= 5);
+// const aprobadosF = alumnosF.filter(a => a.final >= 5);
