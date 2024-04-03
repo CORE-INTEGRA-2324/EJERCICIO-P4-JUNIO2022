@@ -5,7 +5,7 @@ exports.load = async (filename) => {
     return JSON.parse(buf);
 };
 
-exports.alumnosContinua = (notas) => {
+const alumnosContinua = exports.alumnosContinua = (notas) => {
     return notas.filter((alumno) => {
         let condicionContinua = typeof alumno.parcial1 !== "undefined" && typeof alumno.parcial2 !== "undefined";
         return condicionContinua;
@@ -16,6 +16,12 @@ exports.alumnosFinal = (notas) => {
     return notas.filter((alumno) => {
         let condicionContinua = typeof alumno.final !== "undefined";
         return condicionContinua;
+    });
+};
+
+exports.alumnosContinuaAprobados = (notas) => {
+    return notas.filter((alumno) => {
+        return (alumno.parcial1 + alumno.parcial2) / 2 >= 5;
     });
 };
 
