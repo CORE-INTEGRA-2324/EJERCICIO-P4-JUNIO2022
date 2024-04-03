@@ -20,19 +20,44 @@ const alumnosFinal = exports.alumnosFinal = (notas) => {
 };
 
 exports.alumnosContinuaAprobados = (notas) => {
-    let alumnosAprobados = alumnosContinua(notas);
-    return alumnosAprobados.filter((alumno) => {
+    let arrayAlumnosContinua = alumnosContinua(notas);
+    return arrayAlumnosContinua.filter((alumno) => {
         return (alumno.parcial1 + alumno.parcial2) / 2 >= 5;
     });
 };
 
 exports.alumnosFinalAprobados = (notas) => {
-    let alumnosAprobados = alumnosFinal(notas);
-    return alumnosAprobados.filter((alumno) => {
+    let arrayAlumnosFinal = alumnosFinal(notas);
+    return arrayAlumnosFinal.filter((alumno) => {
         return alumno.final >= 5
     });
 };
 
-// APROBADOS
-// const aprobadosC = alumnosC.filter(a => (a.parcial1 + a.parcial2) / 2 >= 5);
-// const aprobadosF = alumnosF.filter(a => a.final >= 5);
+exports.mediaAlumnosContinua = (notas) => {
+    let arrayAlumnosContinua = alumnosContinua(notas);
+    let notaMediaAlumnosContinua = arrayAlumnosContinua.map((alumno) => {
+        return (alumno.parcial1 + alumno.parcial2) / 2;
+    });
+
+    let sumaMedias = notaMediaAlumnosContinua.reduce(
+        (acumulador, media) => {
+            return acumulador + media
+        }, 0);
+
+    let mediaAlumnos = sumaMedias / arrayAlumnosContinua.length;
+
+    return mediaAlumnos;
+};
+
+exports.mediaAlumnosFinal = (notas) => {
+    let arrayAlumnosFinal = alumnosFinal(notas);
+    
+    let sumaMedias = arrayAlumnosFinal.reduce(
+        (acumulador, alumno) => {
+            return acumulador + alumno.final
+        }, 0);
+
+    let mediaAlumnos = sumaMedias / arrayAlumnosFinal.length;
+    
+    return mediaAlumnos;
+};
