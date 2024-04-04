@@ -1,0 +1,25 @@
+[
+    {
+        "nombre": "John Coltrane",
+        "parcial1": 6.3,
+        "parcial2": 6.2
+    },
+    {
+        "nombre": "Miles Davis",
+        "final": 6.5
+    },
+    {
+        "nombre": "Mickey Mouse",
+        "final": 2.3
+    },
+    {
+        "nombre": "Michael Jordan",
+        "parcial1": 6.3,
+        "parcial2": 8.2
+    },
+    {
+        "nombre": "Antonio Integra",
+        "parcial1": 2.3,
+        "parcial2": 7.2
+    }
+]
