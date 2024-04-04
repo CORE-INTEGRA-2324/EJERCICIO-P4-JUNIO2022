@@ -41,6 +41,46 @@ exports.notaMediaContinuaDIRECTO = (notas) => {
     return mediaContinua;
 };
 
+const alumnosFinalDIRECTO = exports.alumnosFinalDIRECTO = (notas) => {
+    let alumnosFinal = notas.filter((alumno) => {
+        return typeof alumno.final !== "undefined";
+    });
+
+    return alumnosFinal;
+};
+
+exports.alumnosFinalAprobadosDIRECTO = (notas) => {
+    let alumnosFinal = alumnosFinalDIRECTO(notas);
+
+    let alumnosAprobados = alumnosFinal.filter((alumno) => {
+        let condicionAprobado = alumno.final >= 5;
+        return condicionAprobado;
+    });
+
+    return alumnosAprobados;
+};
+
+exports.mediaAlumnosFinalDIRECTO = (notas) => {
+    let alumnosFinal = alumnosFinalDIRECTO(notas);
+
+    let valorInicialAcumulador = 0;
+
+    let sumaAcumuladaNotasFinal = alumnosFinal.reduce((valorAcumulado, alumno) => {
+        return valorAcumulado + alumno.final;
+    }, valorInicialAcumulador);
+
+    let mediaAlumnosFinal = sumaAcumuladaNotasFinal / alumnosFinal.length;
+
+    return mediaAlumnosFinal;
+};
+
+
+
+
+
+
+
+
 const alumnosContinua = exports.alumnosContinua = (notas) => {
     return notas.filter((alumno) => {
         let condicionContinua = typeof alumno.parcial1 !== "undefined" && typeof alumno.parcial2 !== "undefined";
