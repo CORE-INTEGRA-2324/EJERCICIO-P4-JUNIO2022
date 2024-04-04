@@ -5,12 +5,40 @@ exports.load = async (filename) => {
     return JSON.parse(buf);
 };
 
-exports.alumnosContinuaDIRECTO = (notas) => {
+const alumnosContinuaDIRECTO = exports.alumnosContinuaDIRECTO = (notas) => {
     let alumnosContinua = notas.filter((alumno) => {
         return typeof alumno.final === "undefined";
     });
 
     return alumnosContinua;
+};
+
+
+exports.alumnosContinuaDIRECTOAprobados = (notas) => {
+    let arrayAlumnosContinua = alumnosContinuaDIRECTO(notas);
+
+    let alumnosAprobados = arrayAlumnosContinua.filter((alumno) => {
+        let condicionAprobado = (( alumno.parcial1 + alumno.parcial2 ) / 2) >= 5;
+        return condicionAprobado;
+    });
+
+    return alumnosAprobados;
+};
+
+exports.notaMediaContinuaDIRECTO = (notas) => {
+    let arrayAlumnosContinua = alumnosContinuaDIRECTO(notas);
+    let numeroAlumnosContinua = arrayAlumnosContinua.length;
+
+    let valorInicialAcumulador = 0;
+
+    let sumaAcumuladaMediasContinua = arrayAlumnosContinua.reduce((valorAcumulado, alumno) => {
+        let mediaAlumno = (alumno.parcial1 + alumno.parcial2) / 2;
+        return valorAcumulado + mediaAlumno;
+    }, valorInicialAcumulador);
+
+    let mediaContinua = sumaAcumuladaMediasContinua / numeroAlumnosContinua;
+
+    return mediaContinua;
 };
 
 const alumnosContinua = exports.alumnosContinua = (notas) => {
